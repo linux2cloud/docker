@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nginxapp:
+    image: nginx
+    volumes:
+      - nginxdata2:/data
+    ports:
+      - "8080:80"
+    networks:
+      - nginxnet
+
+networks:
+  nginxnet:
+    driver: bridge
+
+volumes:
+  nginxdata2:
