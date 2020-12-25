@@ -1,0 +1,16 @@
+FROM centos:latest
+LABEL owner="Linux2Cloud"
+MAINTAINER linux2cloud
+RUN yum install httpd -y
+COPY index.html /var/www/html
+ENV VENDOR centos
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
+################################
+version: "3"
+services:
+  httpd:
+    build: .
+    ports:
+      - "8080:80"
+
